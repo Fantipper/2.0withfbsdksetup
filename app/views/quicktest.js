@@ -10,16 +10,20 @@ import {
 	TouchableOpacity,
 	ScrollView,
 } from 'react-native';
-//import {  } from 'react-native-elements'
 import { Fonts } from '../src/utils/Fonts';
-/*import  Hr  from 'react-native-hr'
-*/
+var FBLoginButton = require('../components/FBLoginButton');
 import TextInputComp from '../components/TextInputComp';
+import TermsFooter from '../components/TermsFooter';
 
 export default class quicktest extends Component{
+	state = { _fullname: "", _password: "" }
+	submitCheck() {
+		console.log('now run the register check' )
+		const { _fullname, _password } = this.state
+	}
 	render() {
 		return (
-			<View style={styles.container}>
+			<ScrollView contentContainerStyle={styles.contentContainer}>
    				<Text style={styles.screenTitle}>Register</Text>
    				<View style={styles.signinTextCont}>
 	   				<Text style={styles.signinText}>Already have an account? </Text>
@@ -31,12 +35,19 @@ export default class quicktest extends Component{
 	   				<Text style={styles.instructions}>To become a Creator, please visit our </Text>
 	   				<View style={styles.siteBtnCont}>
 		   				<TouchableOpacity>
-			   					<Text style={styles.siteBtn}>full desktop site</Text>
-			   				</TouchableOpacity>
+		   					<Text style={styles.siteBtn}>full desktop site</Text>
+		   				</TouchableOpacity>
 		   				<Text style={styles.instructions}>.</Text>
 	   				</View>
    				</View>
+
    				<View style={styles.horizontalRule} />
+   				<FBLoginButton />
+   				<View style={styles.dividerContainer}>
+   					<View style={styles.horizontalRuleOR} />
+   					<Text style={styles.dividerText}>OR</Text>
+   					<View style={styles.horizontalRuleOR} />
+   				</View>
    				
 				<TextInputComp id='Full Name' />
 				<TextInputComp id='Email' />
@@ -46,31 +57,49 @@ export default class quicktest extends Component{
 				<TouchableOpacity style={styles.btn_choosePhoto}>
 					<Text style={styles.buttonText}>CHOOSE PROFILE PHOTO</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.btn_register}>
+				<TouchableOpacity style={styles.btn_register} onPress={() => submitCheck()} >
 					<Text style={styles.buttonText}>REGISTER!</Text>
 				</TouchableOpacity>
-			</View>
+				<TermsFooter />
+			</ScrollView>
 		)
 	}
 }
 
 const styles = StyleSheet.create ({
-	container: {
-		flex: 1,
+	contentContainer: {
+		// flex: 1,
 		// backgroundColor: 'azure',
 		backgroundColor: '#f5f5f5',
-		// backgroundColor: 'rgba(240,255,255, 0.7)',
-		
+		paddingVertical: 20,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
-	horizontalRule: {
-		/*borderBottomColor: 'black',
-    	borderBottomWidth: 4,*/
+	horizontalRule: {	/* Divider */
     	backgroundColor: '#d6d6d6',
-  		height: 1.6,
- 		width: 300,
- 		marginVertical: 10,
+  		height: 2,
+ 		width: 364,
+ 		marginVertical: 28,
+	}, /* Divder row container */
+	dividerContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	horizontalRuleOR: {	/* Divider */
+    	backgroundColor: '#d6d6d6',
+  		height: 2,
+ 		width: 144,
+ 		marginVertical: 30,
+ 		marginHorizontal: 24,
+ 		// paddingVertical: 20,
+	},
+	dividerText: {
+		fontSize: 16,
+	    fontFamily: Fonts.LarsseitBold,
+		letterSpacing: 2,
+	    fontWeight: '500',
+	    color: '#d6d6d6',
 	},
 	screenTitle: {
 	    fontSize: 22,
@@ -82,69 +111,61 @@ const styles = StyleSheet.create ({
 	signinTextCont: {
 		// flexGrow: 1,
 		alignItems: 'flex-end',
-		paddingVertical: 16,
+		paddingVertical: 6,
 		flexDirection: 'row',
 	},
 	signinText: {
-	    fontSize: 18,
+	    fontSize: 20,
 	    fontFamily: Fonts.Larsseit,
 		color: 'black',
 	},
 	signinBtn: {
-	    fontSize: 18,
+	    fontSize: 20,
 		color: '#00d278',
 		textDecorationLine: 'underline',
 	}, /* full desktop site for creator */
 	siteTextCont: {
-		alignItems: 'flex-end',
+		//alignItems: 'flex-end',
 		paddingVertical: 16,
-		// flexDirection: 'row',
 		alignItems: 'center',
-
 	},
 	siteBtnCont: {
 		flexDirection: 'row',
-
 	},
 	instructions: {
-		fontSize: 15,
+	    fontFamily: Fonts.Larsseit,
+		fontSize: 18,
 		color: '#939393',
-	    // textAlign: 'center',
 	},
 	siteBtn: {
-		fontSize: 15,
+		fontSize: 18,
 		color: '#939393',
-	    // textAlign: 'center',
-		// alignItems: 'center',
 		textDecorationLine: 'underline',
 	},
 	btn_choosePhoto: {
-		width: 300,
-		// height: 50,
-		// paddingHorizontal: 16,
-		marginVertical: 6,
+		width: 364,
+		height: 64,
+		marginVertical: 12,
 		borderRadius: 8,
-		paddingVertical: 14,
-		// backgroundColor: '#414042',
+		paddingVertical: 18,
 		backgroundColor: '#8c8c8c',
 	},
 	btn_register: {
-		width: 300,
-		// height: 50,
-		// paddingHorizontal: 16,
-		marginVertical: 6,
+		width: 364,
+		height: 64,
+		marginVertical: 12,
 		borderRadius: 8,
-		paddingVertical: 14,
+		paddingVertical: 18,
 		backgroundColor: '#00d278',
 	},
 	buttonText: {
 		fontFamily: Fonts.LarsseitBold,
 		letterSpacing: 2,
-	    fontSize: 17,
-	    fontWeight: '200',
+	    fontSize: 18,
+	    fontWeight: '700',
 		color: '#ffffff',
 	    textAlign: 'center',
-		alignItems: 'center',
+		alignItems: 'flex-end',
 		justifyContent: 'center'
 	},
 });
