@@ -10,7 +10,7 @@ import {
 	TouchableOpacity,
 	ScrollView,
 } from 'react-native';
-import { TextField } from 'react-native-material-textfield';
+// import { TextField } from 'react-native-material-textfield';
 import { Fonts } from '../src/utils/Fonts';
 
 class re3 extends Component {
@@ -74,7 +74,6 @@ class re3 extends Component {
 	   					// style={styles.inputBox, borderColor: this.state.borderColor } 
 
 	   					underlineColorAndroid='rgba(0,0,0,0)'
-	   					// underlineColorAndroid={ isFocused? 'blue' : 'red'}
 	   					placeholderTextColor="grey" 
 	   					returnKeyType="next"
 	   					onSubmitEditing={() => this.lastname.focus()}
