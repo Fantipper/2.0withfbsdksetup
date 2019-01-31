@@ -2,14 +2,13 @@
 
 import React, { Component }  from 'react';
 import {
-	StyleSheet,
 	View,
 	Text,
-	Button,
 	TextInput,
 	TouchableOpacity,
-	ScrollView,
 } from 'react-native';
+import { Fonts } from '../src/utils/Fonts';
+
 
 export default class TextInputComp extends Component {
 	constructor(props) {
@@ -20,6 +19,9 @@ export default class TextInputComp extends Component {
 	  	id: this.props.id,
 	  	borderColor: '#d6d6d6',
 	  }
+
+		/*if(this.props.id === "Email") {
+			console.log('return email key board')}*/
 	}
 	static defaultProps = {
 	  value: '',
@@ -31,31 +33,47 @@ export default class TextInputComp extends Component {
 		this.setState({ value: value });
 	}
 	onSubmitEditing(e) {
-		console.log('onSubmitEditing called : ' + e);
+		console.log('onSubmitEditing called : ' + this.props.id.toString() + ': ' + e);
 	}
 
 	onFocus(e) {
 		console.log('on focus called')
 		this.setState({
 			borderColor: '#00d278',
-			
-		})
+		});
 	}
 	onBlur(e) {
 		console.log('on blur called');
 		this.setState({
 			borderColor: '#d6d6d6',
-			
 		})
 	}
 
+	// keyboardType(this.state.id) {
+	// 	if(this.props.id === "Email") {
+	// 		console.log('return email key board')
+	// 	} else {
+	// 		keyboardType={email-address}
+	// 	}
+	// // }
+	// keyboardType(id) {
+	// 	if (id.toString() === "Email"){
+	// 		console.log("emailsdsdsakdlaflg")
+	// 		return "email-address"
+	// 		// this.setState({"email-address"})
+	// 	}
+
+	
+
+
 	render() {
+
 		return (
 			<View>
 			<TextInput 
 				// placeholder=''
 				placeholder={this.state.id}	
-				placeholderTextColor='#6a6a6a'			
+				placeholderTextColor='#6a6a6a'
 				value={this.state.value}
 				maxLength={40}
 				selectionColor='#00d278'
@@ -63,32 +81,25 @@ export default class TextInputComp extends Component {
 				editable={true}
 				onFocus={(e) => this.onFocus(e)}
 				onBlur={(e) => this.onBlur(e)}
+				// keyboardType={[(this.id === "Email") ? "email-address" : "default"]}
+				// keyboardType={(id) => this.keyboardType(id)}
 				onChangeText={(value) => this.onChangeText(value)}
 				onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
 				style={{
-					width: 300,
+					width: 364,
+					height: 52,
 					backgroundColor: 'white',
-
 					borderColor: this.state.borderColor,
 					borderRadius: 8,
 					borderWidth: 2,
+					fontFamily: Fonts.LarsseitBold,
+					fontSize: 16,
 					marginVertical: 6,
-					paddingHorizontal: 16,
+					paddingHorizontal: 26,
 				}}
 			/>
-
-			{/*<Text style={styles.testtext}>{this.state.value}</Text>*/}
 			</View>
 		)
 	}
 
 }
-
-const styles = StyleSheet.create ({
-	testtext: {
-		fontFamily: 'Roboto',
-	    fontSize: 20,
-	    fontWeight: '300',
-		color: 'black',
-	},
-})
