@@ -10,7 +10,7 @@ import {
 	TouchableOpacity,
 	ScrollView,
 } from 'react-native';
-import { TextField } from 'react-native-material-textfield';
+//import { TextField } from 'react-native-material-textfield';
 import { Fonts } from '../src/utils/Fonts';
 
 class RegisterScreen extends Component {
@@ -85,8 +85,8 @@ class RegisterScreen extends Component {
    					// style={styles.inputBox, borderColor: this.state.borderColor } 
    					style={{borderColor: this.state.borderColor }} 
 
-   					onBlur={ () => this.onBlur() }
-   					onFocus={ () => this.onFocus() }
+   					// onBlur={ () => this.onBlur() }
+   					// onFocus={ () => this.onFocus() }
    					underlineColorAndroid='rgba(0,0,0,0)'
    					placeholder="Name" 
    					placeholderTextColor="grey" 
