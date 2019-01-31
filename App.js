@@ -9,16 +9,20 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { 
-createStackNavigator, 
-// createSwitchNavigator, 
-createDrawerNavigator, 
-createAppContainer } from 'react-navigation' //@3.0.9
+  createStackNavigator, 
+  // createSwitchNavigator, 
+  createDrawerNavigator, 
+  createAppContainer } from 'react-navigation' //@3.0.9
 
 import LoginScreen from './app/views/LoginScreen'
+import SigninScreen from './app/views/SigninScreen'
 import Register from './app/views/RegisterScreen'
-import Regi2 from './app/views/RegiForm'
+import Logout from './app/views/Logout'
+// import Regi2 from './app/views/RegiForm'
 import re3 from './app/views/re3'
 import quicktest from './app/views/quicktest'
+import HelloFacebook from './app/components/HelloFacebook'
+import SignOrReg from './app/views/SignOrReg'
 
 // var FBLoginButton = require('./app/components/FBLoginButton');
 
@@ -73,12 +77,16 @@ const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: Dashboard,
   LoginScreen: LoginScreen,
   Register: Register,
-  Regi2: Regi2,
+  SigninScreen: SigninScreen,
+  Logout: Logout,
+  // Regi2: Regi2,
   re3: re3,
-  quicktest: quicktest
+  quicktest: quicktest,
+  HelloFacebook: HelloFacebook,
+  SignOrReg: SignOrReg,
 },{
   unmountInactiveRoute: true,
-  initialRouteName: 'quicktest',
+  initialRouteName: 'SignOrReg',
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: 'orange'
